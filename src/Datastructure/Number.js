@@ -27,11 +27,15 @@ enterButton.addEventListener("click", (e) => {
 
 function sumOfNum(inputValue) {
   let sum = 0;
+  let totalsum = [];
   for (let i = 1; i <= inputValue; i++) {
-    sum += i;
+    if (i % 3 === 0 || i % 5 === 0) {
+      sum += i;
+      totalsum.push(i);
+    }
   }
-
   let sumValue = document.createElement("p");
-  sumValue.innerHTML = "Sum of the number one to " + inputValue + " is " + sum;
+  sumValue.innerHTML = totalsum.join(",") + " " + " Total is :" + sum;
+
   divNode.appendChild(sumValue);
 }
