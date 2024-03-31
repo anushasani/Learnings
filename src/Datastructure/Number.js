@@ -12,7 +12,7 @@ let input = document.getElementById("inputId");
 
 let productNode = document.createElement("button");
 productNode.setAttribute("Id", "productId");
-productNode.innerText = "guessedNumber";
+productNode.innerText = "Enter";
 productNode.style.marginLeft = "20px";
 
 divNode.appendChild(productNode);
@@ -24,36 +24,16 @@ document.addEventListener("DOMContentLoaded", function () {
     e.preventDefault();
     let input = document.getElementById("inputId");
     var inputValue = input.value;
-    guessGame(inputValue);
+    leapYear(inputValue);
   });
 });
-function guessGame(inputValue) {
-  const secretNumber = Math.floor(Math.random() * 100);
-  console.log("guess", secretNumber);
-  let tries = 0;
 
-  do {
-    if (!isNaN(inputValue)) {
-      tries++;
-      console.log("tries", tries);
-      if (inputValue > secretNumber) {
-        let pNode = document.createElement("p");
-        pNode.innerHTML = "Nummber is larger than the secret number";
-        divNode.appendChild(pNode);
-      } else if (inputValue < secretNumber) {
-        let pNode = document.createElement("p");
-        pNode.innerHTML = "Nummber is Smaller than the secret number";
-        divNode.appendChild(pNode);
-      } else {
-        let pNode = document.createElement("p");
-        pNode.innerHTML =
-          "Congratulations! You guessed the secret number in " +
-          tries +
-          " tries.";
-        divNode.appendChild(pNode);
-      }
-    } else {
-      alert("Invalid input. Please enter a valid number.");
-    }
-  } while (secretNumber === inputValue);
+function leapYear(year) {
+  let pNode = document.createElement("p");
+  if ((year % 4 === 0 && year % 100 !== 0) || year % 400 === 0) {
+    pNode.innerHTML = year + "year is a leap year";
+  } else {
+    pNode.innerHTML = year + "year is not a leap year";
+  }
+  divNode.appendChild(pNode);
 }
