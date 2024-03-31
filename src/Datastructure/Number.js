@@ -12,7 +12,7 @@ let input = document.getElementById("inputId");
 
 let productNode = document.createElement("button");
 productNode.setAttribute("Id", "productId");
-productNode.innerText = "Multiplication";
+productNode.innerText = "PrimeNumber";
 productNode.style.marginLeft = "20px";
 
 divNode.appendChild(productNode);
@@ -24,17 +24,29 @@ document.addEventListener("DOMContentLoaded", function () {
     e.preventDefault();
     let input = document.getElementById("inputId");
     var inputValue = input.value;
-    productOfNum(inputValue);
+    primeNum(inputValue);
   });
 });
 
-function productOfNum(inputValue) {
-  let product = [];
-  for (let i = 1; i <= 12; i++) {
-    product.push(inputValue * i);
+function primeNum(inputValue) {
+  let result = [];
+  for (let i = 0; i < inputValue; i++) {
+    if (isPrime(i)) {
+      result.push(i);
+    }
   }
-  let pNode = document.createElement("p");
-
-  pNode.innerHTML = "Total product is " + product;
+  pNode = document.createElement("p");
+  pNode.innerHTML = "The list of prime Number is:" + result;
   divNode.appendChild(pNode);
+  function isPrime(n) {
+    if (n === 0 || n === 1) {
+      return false;
+    }
+    for (let i = 2; i < n; i++) {
+      if (n % i === 0) {
+        return false;
+      }
+    }
+    return true;
+  }
 }
