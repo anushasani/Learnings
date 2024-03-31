@@ -10,32 +10,53 @@ inputNode.setAttribute("id", "inputId");
 divNode.appendChild(inputNode);
 let input = document.getElementById("inputId");
 
-let enterNode = document.createElement("button");
-enterNode.setAttribute("id", "Enter");
-enterNode.innerText = "Submit";
-divNode.appendChild(enterNode);
+let sumNode = document.createElement("button");
+sumNode.setAttribute("Id", "sumId");
+sumNode.innerText = "Sum";
+sumNode.style.marginLeft = "20px";
+let productNode = document.createElement("button");
+productNode.setAttribute("Id", "productId");
+productNode.innerText = "Product";
+productNode.style.marginLeft = "20px";
+divNode.appendChild(sumNode);
+divNode.appendChild(productNode);
 
-let enterButton = document.getElementById("Enter");
+document.addEventListener("DOMContentLoaded", function () {
+  let sumButton = document.getElementById("sumId");
+  let productButton = document.getElementById("productId");
 
-enterButton.addEventListener("click", (e) => {
-  e.preventDefault();
-  let input = document.getElementById("inputId");
-  var inputValue = input.value;
-  console.log("inputValue", inputValue);
-  sumOfNum(inputValue);
+  sumButton.addEventListener("click", (e) => {
+    e.preventDefault();
+    let input = document.getElementById("inputId");
+    var inputValue = input.value;
+    sumOfNum(inputValue);
+  });
+  productButton.addEventListener("click", (e) => {
+    e.preventDefault();
+    let input = document.getElementById("inputId");
+    var inputValue = input.value;
+    productOfNum(inputValue);
+  });
 });
 
 function sumOfNum(inputValue) {
   let sum = 0;
-  let totalsum = [];
-  for (let i = 1; i <= inputValue; i++) {
-    if (i % 3 === 0 || i % 5 === 0) {
-      sum += i;
-      totalsum.push(i);
-    }
-  }
-  let sumValue = document.createElement("p");
-  sumValue.innerHTML = totalsum.join(",") + " " + " Total is :" + sum;
 
-  divNode.appendChild(sumValue);
+  for (let i = 0; i <= inputValue; i++) {
+    sum += i;
+  }
+  let pNode = document.createElement("p");
+
+  pNode.innerHTML = "Total sum is " + sum;
+  divNode.appendChild(pNode);
+}
+function productOfNum(inputValue) {
+  let product = 1;
+  for (let i = 1; i <= inputValue; i++) {
+    product *= i;
+  }
+  let pNode = document.createElement("p");
+
+  pNode.innerHTML = "Total product is " + product;
+  divNode.appendChild(pNode);
 }
