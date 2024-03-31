@@ -12,7 +12,7 @@ let input = document.getElementById("inputId");
 
 let productNode = document.createElement("button");
 productNode.setAttribute("Id", "productId");
-productNode.innerText = "PrimeNumber";
+productNode.innerText = "guessedNumber";
 productNode.style.marginLeft = "20px";
 
 divNode.appendChild(productNode);
@@ -24,29 +24,36 @@ document.addEventListener("DOMContentLoaded", function () {
     e.preventDefault();
     let input = document.getElementById("inputId");
     var inputValue = input.value;
-    primeNum(inputValue);
+    guessGame(inputValue);
   });
 });
+function guessGame(inputValue) {
+  const secretNumber = Math.floor(Math.random() * 100);
+  console.log("guess", secretNumber);
+  let tries = 0;
 
-function primeNum(inputValue) {
-  let result = [];
-  for (let i = 0; i < inputValue; i++) {
-    if (isPrime(i)) {
-      result.push(i);
-    }
-  }
-  pNode = document.createElement("p");
-  pNode.innerHTML = "The list of prime Number is:" + result;
-  divNode.appendChild(pNode);
-  function isPrime(n) {
-    if (n === 0 || n === 1) {
-      return false;
-    }
-    for (let i = 2; i < n; i++) {
-      if (n % i === 0) {
-        return false;
+  do {
+    if (!isNaN(inputValue)) {
+      tries++;
+      console.log("tries", tries);
+      if (inputValue > secretNumber) {
+        let pNode = document.createElement("p");
+        pNode.innerHTML = "Nummber is larger than the secret number";
+        divNode.appendChild(pNode);
+      } else if (inputValue < secretNumber) {
+        let pNode = document.createElement("p");
+        pNode.innerHTML = "Nummber is Smaller than the secret number";
+        divNode.appendChild(pNode);
+      } else {
+        let pNode = document.createElement("p");
+        pNode.innerHTML =
+          "Congratulations! You guessed the secret number in " +
+          tries +
+          " tries.";
+        divNode.appendChild(pNode);
       }
+    } else {
+      alert("Invalid input. Please enter a valid number.");
     }
-    return true;
-  }
+  } while (secretNumber === inputValue);
 }
