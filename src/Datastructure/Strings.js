@@ -1,12 +1,13 @@
-function reverseList() {
-  let length = element.length;
-  for (let i = 0; i < Math.floor(length / 2); i++) {
-    const temp = element[i];
-    element[i] = element[length - 1 - i];
-    element[length - 1 - i] = temp;
+// Write a function that checks whether an element occurs in a list
+
+function elementOccurs(arr, selectedValue) {
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === selectedValue) {
+      return console.log("yes it is present in the element");
+    }
   }
+  return console.log("No it is present in the element");
 }
 
-const element = [78, 34, 67, 23, 90, 69];
-reverseList(element);
-console.log("Reverse List : " + element);
+const arr = [34, 5, 7, 2, 59, 4, 2, 3];
+elementOccurs(arr, 10);
