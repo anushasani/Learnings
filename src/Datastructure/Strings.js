@@ -1,13 +1,14 @@
-// Write a function that checks whether an element occurs in a list
-
-function elementOccurs(arr, selectedValue) {
+// Write a function that returns the elements on odd positions in a list
+function returnOdd(arr) {
+  const temp = [];
   for (let i = 0; i < arr.length; i++) {
-    if (arr[i] === selectedValue) {
-      return console.log("yes it is present in the element");
+    if (i % 2 !== 0) {
+      temp.push(arr[i]);
     }
   }
-  return console.log("No it is present in the element");
+  return temp;
 }
 
-const arr = [34, 5, 7, 2, 59, 4, 2, 3];
-elementOccurs(arr, 10);
+const arr = [45, 76, 2, 1, 4, 5, 35, 45];
+
+console.log("Odd Number in the list are : " + returnOdd(arr));
