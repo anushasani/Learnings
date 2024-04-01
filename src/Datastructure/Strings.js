@@ -1,13 +1,12 @@
-let element = [78, 34, 67, 23, 90, 69];
-
-function largestNumber() {
-  let Largest = element[0];
-  for (let i = 0; i < element.length; i++) {
-    if (element[i] > Largest) {
-      Largest = element[i];
-      console.log(Largest + "is the largest");
-    }
+function reverseList() {
+  let length = element.length;
+  for (let i = 0; i < Math.floor(length / 2); i++) {
+    const temp = element[i];
+    element[i] = element[length - 1 - i];
+    element[length - 1 - i] = temp;
   }
-  return Largest;
 }
-largestNumber();
+
+const element = [78, 34, 67, 23, 90, 69];
+reverseList(element);
+console.log("Reverse List : " + element);
