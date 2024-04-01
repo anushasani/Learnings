@@ -1,15 +1,19 @@
-// Write a function that computes the running total of a list
-
-function sumOfList(arr) {
-  let sum = 0;
-  let runningTotalList = [];
-  for (let i = 0; i < arr.length; i++) {
-    sum += arr[i];
-    runningTotalList.push(sum);
+// Write a function that tests whether a string is a palindrome.'
+function palindrome(str) {
+  let start = 0;
+  let clearStrings = str.toLowerCase().replace(/[^a-z0-9]/g, "");
+  let end = clearStrings.length - 1;
+  while (start < end) {
+    if (clearStrings[start] !== clearStrings[end]) {
+      return "Not a palindrome";
+    }
+    start++;
+    end--;
   }
-  return runningTotalList;
+  return "palindrome";
 }
 
-const arr = [1, 2, 3, 4, 5];
+let str = "A man, a plan, a canal, Panama";
 
-console.log("Total of a List is : ", sumOfList(arr));
+palindrome(str);
+console.log("The given string is :", palindrome(str));
