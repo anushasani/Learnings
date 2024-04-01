@@ -1,19 +1,31 @@
-// Write a function that tests whether a string is a palindrome.'
-function palindrome(str) {
-  let start = 0;
-  let clearStrings = str.toLowerCase().replace(/[^a-z0-9]/g, "");
-  let end = clearStrings.length - 1;
-  while (start < end) {
-    if (clearStrings[start] !== clearStrings[end]) {
-      return "Not a palindrome";
-    }
-    start++;
-    end--;
+// Write three functions that compute the sum of the numbers in a list: using a for-loop, a while-loop and recursion. (Subject to availability of these constructs in your language of choice.)
+
+function sumOfArray(arr) {
+  let sum = 0;
+  for (let i = 0; i < arr.length; i++) {
+    sum += arr[i];
   }
-  return "palindrome";
+  return sum;
 }
 
-let str = "A man, a plan, a canal, Panama";
+function sumOfArray(arr) {
+  let i = 0;
+  let sum = 0;
 
-palindrome(str);
-console.log("The given string is :", palindrome(str));
+  while (i < arr.length) {
+    sum += arr[i];
+    i++;
+  }
+  return sum;
+}
+
+function sumOfArray(arr, sum = 0) {
+  if (arr.length === sum) {
+    return 0;
+  }
+
+  return arr[sum] + sumOfArray(arr, sum + 1);
+}
+
+let arr = [1, 2, 3, 4, 5];
+console.log("Total sum is ", sumOfArray(arr));
