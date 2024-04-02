@@ -1,13 +1,18 @@
-// Write a function on_all that applies a function to every element of a list. Use it to print the first twenty perfect squares. The perfect squares can be found by multiplying each natural number with itself. The first few perfect squares are 1*1= 1, 2*2=4, 3*3=9, 4*4=16. Twelve for example is not a perfect square because there is no natural number m so that m*m=12. (This question is tricky if your programming language makes it difficult to pass functions as arguments.)
+// Write a function that concatenates two lists. [a,b,c], [1,2,3] → [a,b,c,1,2,3]
 
-function on_all(n) {
-  let value = 0;
-  for (let i = 0; i <= 20; i++) {
-    if (Math.floor(Math.sqrt(i)) * Math.floor(Math.sqrt(i)) === i) {
-      value = i;
-      console.log(value);
-    }
+function concatenateLists(list1, list2) {
+  let temp = [];
+  for (let i = 0; i < list1.length; i++) {
+    temp.push(list1[i].concat(list2[i]));
   }
+  return temp;
 }
 
-console.log(on_all(20));
+function listsSplit(list1, list2) {
+  return list1.concat(list2);
+}
+
+const list1 = ["a", "b", "c"];
+const list2 = [1, 2, 3];
+console.log(concatenateLists(list1, list2));
+console.log(listsSplit(list1, list2));
