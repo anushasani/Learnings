@@ -1,33 +1,36 @@
-// Write a function that concatenates two lists. [a,b,c], [1,2,3] → [a,b,c,1,2,3]
+// Write a function that rotates a list by k elements. For example [1,2,3,4,5,6] rotated by two becomes [3,4,5,6,1,2]. Try solving this without creating a copy of the list. How many swap or move operations do you need?
 
-//  One Method
-function concatenateLists(list1, list2) {
-  let temp = [];
-  for (let i = 0; i < list1.length; i++) {
-    temp.push(list1[i]);
-    temp.push(list2[i]);
+function rotateRight(k) {
+  let arr = [1, 2, 3, 4, 5, 6];
+  for (let i = 0; i < k; i++) {
+    arr.push(arr.shift(i));
   }
-  return temp;
+  console.log(arr);
 }
 
-const list1 = ["a", "b", "c"];
-const list2 = [1, 2, 3];
-console.log(concatenateLists(list1, list2));
-console.log(splitMethod(list1, list2));
+rotateRight(7);
 
-function splitMethod(list1, list2) {
-  let l = list1.length + list2.length;
-
-  let r = [];
-  let k = 0;
-  let a = 0;
-
-  for (let i = 0; i < l; i++) {
-    if (i % 2 === 0) {
-      r[i] = list1[k++];
-    } else {
-      r[i] = list2[a++];
-    }
+function rotateleft(k) {
+  let arr = [1, 2, 3, 4, 5, 6];
+  for (let i = 0; i < k; i++) {
+    arr.unshift(arr.pop(i));
   }
-  return r;
+  console.log(arr);
 }
+
+rotateleft(1);
+
+// Using splice method
+
+function rotateUseSplice(k) {
+  let arr = [1, 2, 3, 4, 5, 6, 7];
+  let deletedArray = arr.splice(0, k);
+
+  console.log("arr", arr);
+
+  for (let i = 0; i < deletedArray.length; i++) {
+    arr.splice(arr.length, 0, deletedArray[i]);
+  }
+  console.log(arr);
+}
+rotateUseSplice(3);
