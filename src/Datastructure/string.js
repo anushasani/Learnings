@@ -1,19 +1,14 @@
-function fibnaccis(n) {
-  if (n <= 1) {
-    return n;
-  } else {
-    return fibnaccis(n - 1) + fibnaccis(n - 2);
+// Write a function that takes a number and returns a list of its digits. So for 2342 it should return [2,3,4,2].
+
+function listOfDigit(str) {
+  let numberString = str.toString();
+  let name = [];
+  for (let i = 0; i < numberString.length; i++) {
+    name.push(parseInt(numberString[i]));
   }
+  return name;
 }
 
-function fibonaccisSequence(nTerms) {
-  let sequence = [];
-  for (let i = 0; i < nTerms; i++) {
-    sequence.push(fibnaccis(i));
-  }
-  return sequence;
-}
+let str = 2342;
 
-const nTerms = 10;
-
-console.log(fibonaccisSequence(nTerms));
+console.log("list of digit", listOfDigit(str));
