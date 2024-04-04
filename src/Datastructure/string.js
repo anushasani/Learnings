@@ -1,21 +1,10 @@
-// finding  number of digist in  a givenn Number
+function factorial(n) {
+  res = 1;
 
-// example : n = 34567
-
-//Step 1 : n > 0; it is to check number present
-//step 2 :  n/10
-//step3 : count ++
-
-function countDigit(n) {
-  let count = 0;
-  n = parseInt(n);
-
-  while (n > 0) {
-    n = Math.floor(n / 10);
-    count++;
+  for (let i = 1; i <= n; i++) {
+    res *= i;
   }
-  return count;
+  return res;
 }
 
-let n = 23468; //5
-console.log("The number in the digit k : ", countDigit(n));
+console.log(factorial(5));
