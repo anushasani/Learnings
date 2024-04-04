@@ -1,14 +1,22 @@
-// Write a function that takes a number and returns a list of its digits. So for 2342 it should return [2,3,4,2].
+// Function to print factorial of a number with interative approch :
 
-function listOfDigit(str) {
-  let numberString = str.toString();
-  let name = [];
-  for (let i = 0; i < numberString.length; i++) {
-    name.push(parseInt(numberString[i]));
+function factorilNumber(n) {
+  let res = 1;
+  for (let i = 1; i <= n; i++) {
+    res *= i;
   }
-  return name;
+  return res;
 }
 
-let str = 2342;
+console.log("Factorial of is : ", factorilNumber(5));
 
-console.log("list of digit", listOfDigit(str));
+// step 1 : res = 1
+
+// i=1  res = res * 1;
+
+// i=2 res = res * 2;
+// .
+// .
+// .
+// .
+// i =5
