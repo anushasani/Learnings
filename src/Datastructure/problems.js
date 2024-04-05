@@ -1,20 +1,47 @@
-// Find the Number Of Trailing Zeros In A Factorial
+//Brutfore code for Highest Common factor or Greatest Common divisor :
 
-function traileringZeros(n) {
-  let res = 0;
+// function HCF(a, b) {
+//   let min = 0;
 
-  let powerOf5 = 5;
+//   if (a < b) {
+//     min = a;
+//   } else {
+//     min = b;
+//   }
 
-  while (n >= powerOf5) {
-    res = res + Math.floor(n / powerOf5);
-    powerOf5 = powerOf5 * 5;
+//   for (let i = min; i >= 1; i--) {
+//     if (a % i === 0 && b % i === 0) {
+//       return i;
+//     }
+//   }
+// }
+
+// console.log("Heighest Common factor", HCF(20, 15));
+//Eculied Algorithm says : find a largest number and
+// replace the LN with  difference between smallest and largest
+//Repeat step 1 and step 2 till both numbers are equal
+//Return any one number
+
+function HCFByEuclids(a, b) {
+  while (a !== 0 && b !== 0) {
+    if (a > b) {
+      a = a % b;
+    } else {
+      b = b % a;
+    }
   }
-
-  return res;
+  if (a !== 0) {
+    return a;
+  } else {
+    return b;
+  }
 }
 
-console.log("trailingZeros of n number is  :  ", traileringZeros(200));
+console.log("Highest Comman factor by eculids: ", HCFByEuclids(45, 78));
 
-// step 1 :  5!  = 120 is 1
+//12 8
+//4  8
+//4 0
 
-// n/5^1 + n/5^2 + n/5^3 .....
+// a/2 or b/2 > a%2 or b%2
+//  log(min(a,b))
