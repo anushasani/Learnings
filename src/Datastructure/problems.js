@@ -1,19 +1,28 @@
-//finding Sum of two in Arrys :
+//finding Anagram or Not :
 
-function dupblicateContains(nums) {
+function anagram(s, t) {
+  if (s.length !== t.length) return false;
+
   const map = new Map();
 
-  for (const index in nums) {
-    if (map.has(nums[index])) return true;
-    map.set(nums[index]);
+  for (const c of s) {
+    if (map.has(c)) map.set(c, map.get(c) + 1);
+    else map.set(c, 1);
   }
-  return false;
-}
-const nums = [1, 2, 3];
+  for (const c of t) {
+    if (!map.has(c)) return false;
 
-console.log(dupblicateContainsSet(nums));
+    map.set(c, map.get(c) - 1);
 
-function dupblicateContainsSet(nums) {
-  const set = new Set(nums);
-  return set.size !== nums.length;
+    if (map.get(c) === 0) map.delete(c);
+  }
+
+  if (map.size > 0) return false;
+
+  return true;
 }
+
+const s = "anagram";
+const t = "nagaram";
+
+console.log(anagram(s, t));
