@@ -1,17 +1,22 @@
-//Maximum subArray
+//Container with most water
 
-function maxSubArray(nums) {
-  let sum = 0;
-  let max = nums[0];
+function containerMaxWater(height) {
+  let mx = 0;
+  let l = 0;
+  let r = height.length - 1;
 
-  nums.forEach((n) => {
-    sum += n;
-    max = Math.max(sum, max);
-    if (sum < 0) sum = 0;
-  });
-  return max;
+  while (l < r) {
+    mx = Math.max(mx, Math.min(height[l], height[r]) * (r - l));
+    if (height[l] < height[r]) l += 1;
+    else if (height[r] < height[l]) r -= 1;
+    else {
+      l += 1;
+      r += 1;
+    }
+  }
+  return mx;
 }
 
-const nums = [-2, 1, -3, 4, -1, 2, 1, -5, 4];
+const height = [1, 8, 6, 2, 5, 4, 8, 3, 7];
 
-console.log(maxSubArray(nums));
+console.log(containerMaxWater(height));
