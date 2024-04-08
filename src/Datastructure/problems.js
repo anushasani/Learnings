@@ -1,28 +1,17 @@
-//finding Anagram or Not :
+//Maximum subArray
 
-function anagram(s, t) {
-  if (s.length !== t.length) return false;
+function maxSubArray(nums) {
+  let sum = 0;
+  let max = nums[0];
 
-  const map = new Map();
-
-  for (const c of s) {
-    if (map.has(c)) map.set(c, map.get(c) + 1);
-    else map.set(c, 1);
-  }
-  for (const c of t) {
-    if (!map.has(c)) return false;
-
-    map.set(c, map.get(c) - 1);
-
-    if (map.get(c) === 0) map.delete(c);
-  }
-
-  if (map.size > 0) return false;
-
-  return true;
+  nums.forEach((n) => {
+    sum += n;
+    max = Math.max(sum, max);
+    if (sum < 0) sum = 0;
+  });
+  return max;
 }
 
-const s = "anagram";
-const t = "nagaram";
+const nums = [-2, 1, -3, 4, -1, 2, 1, -5, 4];
 
-console.log(anagram(s, t));
+console.log(maxSubArray(nums));
