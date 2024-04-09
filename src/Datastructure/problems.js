@@ -1,22 +1,30 @@
-//Container with most water
+//insert interval
 
-function containerMaxWater(height) {
-  let mx = 0;
-  let l = 0;
-  let r = height.length - 1;
+function insertInterval(intervals, newInterval) {
+  const result = [];
 
-  while (l < r) {
-    mx = Math.max(mx, Math.min(height[l], height[r]) * (r - l));
-    if (height[l] < height[r]) l += 1;
-    else if (height[r] < height[l]) r -= 1;
-    else {
-      l += 1;
-      r += 1;
+  for (const interval of intervals) {
+    if (interval[1] < newInterval[0]) {
+      result.push(interval);
+    } else if (interval[0] > newInterval[1]) {
+      result.push(newInterval);
+      newInterval = interval;
+    } else {
+      newInterval[0] = Math.min(interval[0], newInterval[0]);
+      newInterval[1] = Math.max(interval[1], newInterval[1]);
     }
   }
-  return mx;
+  result.push(newInterval);
+  return result;
 }
 
-const height = [1, 8, 6, 2, 5, 4, 8, 3, 7];
+let intervals = [
+  [1, 2],
+  [3, 5],
+  [6, 7],
+  [8, 10],
+  [12, 16],
+];
+let newInterval = [4, 8];
 
-console.log(containerMaxWater(height));
+console.log(insertInterval(intervals, newInterval));
