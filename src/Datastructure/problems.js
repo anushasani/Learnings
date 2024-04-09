@@ -1,30 +1,28 @@
-//insert interval
+//merge interval
 
-function insertInterval(intervals, newInterval) {
+function mergeInterval(intervals) {
+  intervals = intervals.sort((a, b) => a[0] - b[0]);
+  let pair = intervals[0];
   const result = [];
 
-  for (const interval of intervals) {
-    if (interval[1] < newInterval[0]) {
-      result.push(interval);
-    } else if (interval[0] > newInterval[1]) {
-      result.push(newInterval);
-      newInterval = interval;
+  for (const i of intervals) {
+    if (pair[1] >= i[0]) {
+      pair[1] = Math.max(pair[1], i[1]);
     } else {
-      newInterval[0] = Math.min(interval[0], newInterval[0]);
-      newInterval[1] = Math.max(interval[1], newInterval[1]);
+      result.push(pair);
+      pair = i;
     }
   }
-  result.push(newInterval);
+
+  result.push(pair);
   return result;
 }
 
 let intervals = [
-  [1, 2],
-  [3, 5],
-  [6, 7],
+  [1, 3],
+  [2, 6],
   [8, 10],
-  [12, 16],
+  [15, 18],
 ];
-let newInterval = [4, 8];
 
-console.log(insertInterval(intervals, newInterval));
+console.log(mergeInterval(intervals));
