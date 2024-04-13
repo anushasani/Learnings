@@ -1,14 +1,34 @@
-// Given two strings s and goal, return true if and only if s can become goal after some number of shifts on s.
+function rotate1(num, k) {
+  k = k % num.length;
+  if (k < 0) {
+    k = k + num.length;
+  }
+  let l = 0;
+  let r = num.length - 1;
 
-// A shift on s consists of moving the leftmost character of s to the rightmost position.
+  num = reverseArr(num, l, r);
 
-// For example, if s = "abcde", then it will be "bcdea" after one shift
+  l = 0;
+  r = k - 1;
+  num = reverseArr(num, l, r);
 
-function stringGoal(s, goal) {
-  return s.length === goal.length && (s + s).includes(goal);
+  l = k;
+  r = num.length - 1;
+  num = reverseArr(num, l, r);
+  return num;
 }
 
-let s = "abcdew";
-let goal = "bcdea";
+function reverseArr(nums, l, r) {
+  while (l < r) {
+    let temp = nums[l];
+    nums[l] = nums[r];
+    nums[r] = temp;
+    l++;
+    r--;
+  }
 
-console.log(stringGoal(s, goal));
+  return nums;
+}
+const num = [1, 2, 3, 4, 5];
+const kth = 10;
+console.log(rotate1(num, kth));
