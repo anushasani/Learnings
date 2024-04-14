@@ -1,26 +1,26 @@
 //Check  whether it is a Anagram.
 
 const Anagram = function (s, t) {
-  //   s = s.toLowerCase().split("").sort().join("");
-  //   t = t.toLowerCase().split("").sort().join("");
-  //   return s === t;
-
   if (s.length !== t.length) return false;
-  let obj1 = {};
-  let obj2 = {};
-  for (let i = 0; i < s.length; i++) {
-    obj1[s[i]] = (obj1[s[i]] || 0) + 1;
-    obj2[t[i]] = (obj2[t[i]] || 0) + 1;
-  }
 
-  for (const key in obj1) {
-    if (obj1[key] !== obj2[key]) return false;
+  const map = new Map();
+
+  for (const c of s) {
+    if (map.has(c)) map.set(c, map.get(c) + 1);
+    else map.set(c, 1);
   }
+  for (const c of t) {
+    if (!map.has(c)) return false;
+    map.set(c, map.get(c) - 1);
+
+    if (map.get(c) === 0) map.delete(c);
+  }
+  if (map.size > 0) return false;
   return true;
 };
 
-let s = "anagram";
-let t = "nagaram";
+let s = "acca";
+let t = "aaac";
 console.log(Anagram(s, t));
 
 // rat tar
