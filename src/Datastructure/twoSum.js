@@ -2,10 +2,9 @@
 
 function twoSum(arr, target) {
   const map = new Map();
-
   for (const i in arr) {
     const pairedValue = target - arr[i];
-    if (map.has(pairedValue)) return [i, map.get(pairedValue)];
+    if (map.has(pairedValue)) return [map.get(pairedValue), i];
     map.set(arr[i], i);
   }
 }
